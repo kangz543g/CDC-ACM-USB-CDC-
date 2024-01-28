@@ -16,7 +16,7 @@ static const struct usb_device_id acm_ids[] = { \
 	.driver_info = NO_UNION_NORMAL, \
 	},  \
 	{ } \
-}; \
+}; 
 
 test ok - ESP32C3 USB,Arduino SA Uno R3 USB, Pixhawk1-BL USB
 
