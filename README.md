@@ -1,4 +1,39 @@
-# CDC-ACM-USB-CDC-
+/*
+ * USB driver structure.
+ */
+
+static const struct usb_device_id acm_ids[] = {
+	/* quirky and broken devices */
+	{ USB_DEVICE(0x303A, 0x1001), /* ESP32C3 USB DRIVER */   
+	.driver_info = NO_UNION_NORMAL, 
+	},   // NO_UNION_NORMAL,SINGLE_RX_URB,NOT_A_MODEM,IGNORE_DEVICE
+	{ USB_DEVICE(0x2341, 0x0043), /* Arduino SA Uno R3 USB DRIVER 2*/   
+	.driver_info = NO_UNION_NORMAL, 
+	},  
+	{ USB_DEVICE(0x26ac, 0x0011), /* Generic Pixhawk1-BL USB DRIVER 2*/   
+	.driver_info = NO_UNION_NORMAL, 
+	},  
+	{ }
+};
+
+test ok - ESP32C3 USB,Arduino SA Uno R3 USB, Pixhawk1-BL USB
+
+
+[경고는 컴파일러]
+
+WARNING: __dynamic_pr_debug; [/home/kkk/cdcam-03/cdcwdm.ko] undefined!
+WARNING: __dynamic_dev_dbg; [/home/kkk/cdcam-03/cdcwdm.ko] undefined!
+
+__dynamic_dev_dbg이 정의되지 않은 경고는 컴파일러가 해당 함수 또는 매크로를 찾을 수 없을 때 발생합니다. 이 오류는 주로 로깅 및 
+디버깅 기능과 관련된 코드에서 나타납니다.
+
+
+[해결]
+#define cdc_dev_dbg(dev, format, arg...) dev_printk(KERN_DEBUG, dev, format, ## arg)
+
+
+
+# CDC-ACM-USB-CDC
 
 CDC-ACM은 "Communications Device Class - Abstract Control Model"의 약자로, USB로 연결된 장치 간에 통신을 위한 표준 프로토콜이다. 
 CDC-ACM은 주로 시리얼 통신을 지원하는 USB 장치 간에 사용된다. 
@@ -27,3 +62,7 @@ facilitating easy implementation of communication with sensors and various contr
 The USB CDC class offers communication abstraction, allowing easy communication between various USB hosts and devices without
  being dependent on a specific communication device. CDC-ACM is designed with a particular emphasis on implementing these 
  features for serial communication.
+
+
+
+ 
