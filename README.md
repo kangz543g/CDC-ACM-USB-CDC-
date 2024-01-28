@@ -4,19 +4,19 @@
  * USB driver structure.
  */
 
-static const struct usb_device_id acm_ids[] = {
-	/* quirky and broken devices */
-	{ USB_DEVICE(0x303A, 0x1001), /* ESP32C3 USB DRIVER */   
-	.driver_info = NO_UNION_NORMAL, 
-	},   // NO_UNION_NORMAL,SINGLE_RX_URB,NOT_A_MODEM,IGNORE_DEVICE
-	{ USB_DEVICE(0x2341, 0x0043), /* Arduino SA Uno R3 USB DRIVER 2*/   
-	.driver_info = NO_UNION_NORMAL, 
-	},  
-	{ USB_DEVICE(0x26ac, 0x0011), /* Generic Pixhawk1-BL USB DRIVER 2*/   
-	.driver_info = NO_UNION_NORMAL, 
-	},  
-	{ }
-};
+static const struct usb_device_id acm_ids[] = { \
+	/* quirky and broken devices */ \
+	{ USB_DEVICE(0x303A, 0x1001), /* ESP32C3 USB DRIVER */   \
+	.driver_info = NO_UNION_NORMAL, \
+	},   // NO_UNION_NORMAL,SINGLE_RX_URB,NOT_A_MODEM,IGNORE_DEVICE \
+	{ USB_DEVICE(0x2341, 0x0043), /* Arduino SA Uno R3 USB DRIVER 2*/   \
+	.driver_info = NO_UNION_NORMAL, \
+	},  \
+	{ USB_DEVICE(0x26ac, 0x0011), /* Generic Pixhawk1-BL USB DRIVER 2*/ \  
+	.driver_info = NO_UNION_NORMAL, \
+	},  \
+	{ } \
+}; \
 
 test ok - ESP32C3 USB,Arduino SA Uno R3 USB, Pixhawk1-BL USB
 
